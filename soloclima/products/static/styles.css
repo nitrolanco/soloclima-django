@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f3; /* Light background for better contrast */
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #007bff; /* Primary color for header */
+    color: white; /* White text for contrast */
+}
+
+#search-bar {
+    padding: 10px;
+    width: 250px; /* Increased width for better usability */
+    border: 1px solid #ccc; /* Border for better visibility */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+    border-radius: 8px; /* Rounded corners for product cards */
+    transition: transform 0.2s; /* Smooth hover effect */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Arrange children in a column */
+    align-items: center; /* Center children horizontally */
+    max-width: 250px; /* Set a max width for the product card */
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.product-thumbnail {
+    width: 260%; /* Increase image size to 260% of its original size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners for images */
+    margin-left: -30%; /* Adjust left margin to center the image */
+}
+
+.product-card h3 {
+    font-size: 1.2em; /* Slightly larger font for product names */
+    margin: 10px 0; /* Margin for spacing */
+}
+
+.product-card p {
+    margin: 5px 0; /* Margin for spacing */
+    color: #666; /* Gray color for less emphasis */
+}
+
+#pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#pagination button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+#pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed; /* Change cursor for disabled buttons */
+}
+
+#pagination button:hover:not(:disabled) {
+    background-color: #0056b3; /* Darker shade on hover */
+}

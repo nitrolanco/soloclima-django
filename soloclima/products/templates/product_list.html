@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soloclima - Product List</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="{% static '/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Product List</h1>
+        <form id="search-form">
+            <input type="text" id="search-bar" placeholder="Search products..." />
+        </form>
+    </header>
+
+    <div id="product-list" class="product-grid"></div>
+
+    <div id="pagination"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const API_URL = "/api/products/";
+
+        function fetchProducts(page = 1, search = "") {
+            $.get(`${API_URL}?page=${page}&search=${search}`, function (data) {
+                const productGrid = $("#product-list");
+                productGrid.empty(); // Clear the current products
+
+                data.forEach((product) => {
+                    productGrid.append(`
+                        <div class="product-card" >
+                            <img src="{% static '/default-thumbnail.png' %}" style="transform: scale(0.2);">
+                            <h3>${product['Product name']}</h3>
+                            <p>SKU: ${product.SKU}</p>
+                            <p>Category: ${product.Category}</p>
+                            <p>Brand: ${product.Brand}</p>
+                            <p>Price: ${product.Price}</p>
+                            <p>Currency: ${product.Currency}</p>
+                            <a href="#" onclick="showProductDetail('${product.SKU}')">View Details</a>
+                        </div>
+                    `);
+                });
+
+                const pagination = $("#pagination");
+                pagination.empty();
+                pagination.append(
+                    `<button onclick="fetchProducts(${page - 1})" ${page <= 1 ? "disabled" : ""}>Previous</button>`
+                );
+                pagination.append(
+                    `<button onclick="fetchProducts(${page + 1})">Next</button>`
+                );
+            });
+        }
+
+        function showProductDetail(productId) {
+            window.location.href = `/product/${productId}`;
+        }
+
+        $(document).ready(function () {
+            $("#search-bar").on("input", function () {
+                const search = $(this).val();
+                fetchProducts(1, search);
+            });
+
+            fetchProducts(); // Fetch products initially
+        });
+    </script>
+</body>
+</html>
