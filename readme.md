@@ -44,13 +44,20 @@ We've created a Django project that:
 - No connection pooling
 - Reinventing every wheel Django provides out-of-the-box
 
-## 🤯 Code Smell Highlights
+🏆 Achievement Unlocked
 
-```python
-# Behold, the pinnacle of inefficiency!
-def product_list(request):
-    # Manually fetching data like a caveman
-    db = get_mongo_database()
-    products_collection = db['products']
-    products = list(products_collection.find())
-```
+"Most Unnecessary Complexity in a Web Project" 🏅
+"Ignoring Framework Best Practices" 🚩
+"Maximum Effort, Minimum Efficiency" 🏆
+
+📦 Installation (If You Dare)
+bashCopy# Clone this monument to poor decisions
+git clone https://github.com/your-username/soloclima.git
+
+# Install dependencies (hope you like troubleshooting)
+
+pip install -r requirements.txt
+
+# Run the server and question your life choices
+
+python manage.py runserver
